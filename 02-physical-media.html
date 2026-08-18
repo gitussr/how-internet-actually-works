@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 2: Physical Media — How the Internet Actually Works</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -79,9 +80,9 @@
       </p>
 
       <div class="meta-row">
-        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
-        <span class="meta-chip">📋 Prerequisites: <b>Chapter 1</b></span>
-        <span class="meta-chip">📍 Chapter <b>2</b> of 12</span>
+        <span class="meta-chip"><i class="bi bi-clock"></i> <b>20–25 min</b> read</span>
+        <span class="meta-chip"><i class="bi bi-clipboard"></i> Prerequisites: <b>Chapter 1</b></span>
+        <span class="meta-chip"><i class="bi bi-geo-alt-fill"></i> Chapter <b>2</b> of 12</span>
       </div>
 
       <h2>Three ways to move a signal</h2>
@@ -129,7 +130,7 @@
       </p>
 
       <div class="box analogy">
-        <div class="box-label">💧 Analogy: copper is a pipe with friction</div>
+        <div class="box-label"><i class="bi bi-droplet-fill"></i> Analogy: copper is a pipe with friction</div>
         <p>
           Push water through a garden hose and pressure drops the farther it
           travels — friction against the hose walls eats a little energy every
@@ -142,7 +143,7 @@
       </div>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: measure real copper throughput</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: measure real copper throughput</div>
         <p>
           Connect two machines directly with an Ethernet cable (or through a
           switch) and measure actual throughput with <code>iperf3</code>:
@@ -180,7 +181,7 @@ iperf3 -c &lt;machine-A-ip&gt;</code></pre>
       </p>
 
       <div class="box fact">
-        <div class="box-label">⚡ Did you know?</div>
+        <div class="box-label"><i class="bi bi-lightning-charge-fill"></i> Did you know?</div>
         <p>
           Light does travel slower inside fiber than it does in a vacuum — glass
           has a refractive index of about 1.5, so light moves at roughly
@@ -196,7 +197,7 @@ iperf3 -c &lt;machine-A-ip&gt;</code></pre>
       </div>
 
       <div class="box analogy">
-        <div class="box-label">🚇 Analogy: fiber is a mirrored tunnel</div>
+        <div class="box-label"><i class="bi bi-signpost-split-fill"></i> Analogy: fiber is a mirrored tunnel</div>
         <p>
           Imagine a hallway lined with mirrors on every wall. Shine a flashlight
           down it at a shallow enough angle and the beam keeps bouncing forward
@@ -247,7 +248,7 @@ iperf3 -c &lt;machine-A-ip&gt;</code></pre>
       </p>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: Wi-Fi vs. Ethernet, side by side</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: Wi-Fi vs. Ethernet, side by side</div>
         <p>
           Open Wireshark, start a capture on your Wi-Fi interface, and load a
           large web page. Then plug into Ethernet and repeat the capture on the

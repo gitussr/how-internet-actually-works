@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 11: Security &amp; Privacy — How the Internet Actually Works</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -80,9 +81,9 @@
       </p>
 
       <div class="meta-row">
-        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
-        <span class="meta-chip">📋 Prerequisites: <b>Chapters 4, 6 &amp; 7</b></span>
-        <span class="meta-chip">📍 Chapter <b>11</b> of 12</span>
+        <span class="meta-chip"><i class="bi bi-clock"></i> <b>20–25 min</b> read</span>
+        <span class="meta-chip"><i class="bi bi-clipboard"></i> Prerequisites: <b>Chapters 4, 6 &amp; 7</b></span>
+        <span class="meta-chip"><i class="bi bi-geo-alt-fill"></i> Chapter <b>11</b> of 12</span>
       </div>
 
       <h2>NAT: stretching a scarce resource into a side effect of security</h2>
@@ -116,7 +117,7 @@
       </p>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: watch NAT rewrite a packet</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: watch NAT rewrite a packet</div>
         <p>On a Linux box acting as a router (adjust interface names for your setup):</p>
         <pre><code>sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo tcpdump -i eth0 -n</code></pre>
@@ -154,7 +155,7 @@ sudo tcpdump -i eth0 -n</code></pre>
       </table>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: block a port, then let it back in</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: block a port, then let it back in</div>
         <pre><code># Block inbound SSH:
 sudo iptables -A INPUT -p tcp --dport 22 -j DROP
 
@@ -181,7 +182,7 @@ sudo iptables -D INPUT -p tcp --dport 22 -j DROP</code></pre>
       </p>
 
       <div class="box analogy">
-        <div class="box-label">🚚 Analogy: a VPN is an armored car on a public road</div>
+        <div class="box-label"><i class="bi bi-truck-front-fill"></i> Analogy: a VPN is an armored car on a public road</div>
         <p>
           Anyone standing on the highway can see an armored truck driving past
           — the road is public, and so is the fact that a truck is using it.
@@ -228,7 +229,7 @@ sudo iptables -D INPUT -p tcp --dport 22 -j DROP</code></pre>
       </ul>
 
       <div class="box analogy">
-        <div class="box-label">📪 Analogy: two very different kinds of lock</div>
+        <div class="box-label"><i class="bi bi-shield-lock-fill"></i> Analogy: two very different kinds of lock</div>
         <p>
           Symmetric encryption is an ordinary lockbox — one key both locks and
           unlocks it, so you'd better already have a safe way to get a copy of
@@ -243,7 +244,7 @@ sudo iptables -D INPUT -p tcp --dport 22 -j DROP</code></pre>
       </div>
 
       <div class="box fact">
-        <div class="box-label">⚡ Did you know?</div>
+        <div class="box-label"><i class="bi bi-lightning-charge-fill"></i> Did you know?</div>
         <p>
           That switch isn't a stylistic choice — it's forced by raw
           performance. Asymmetric algorithms like RSA are commonly on the
@@ -258,7 +259,7 @@ sudo iptables -D INPUT -p tcp --dport 22 -j DROP</code></pre>
       </div>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: run all three primitives from the command line</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: run all three primitives from the command line</div>
         <pre><code># Symmetric: encrypt a file with AES
 openssl enc -aes-256-cbc -in secret.txt -out secret.enc
 

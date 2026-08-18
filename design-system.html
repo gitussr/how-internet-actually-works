@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Design System — How the Internet Actually Works</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -79,9 +80,9 @@
       </p>
 
       <div class="meta-row">
-        <span class="meta-chip">🎨 <b>7</b> color tokens</span>
-        <span class="meta-chip">🧩 <b>6</b> reusable components</span>
-        <span class="meta-chip">📐 minimal, not exhaustive</span>
+        <span class="meta-chip"><i class="bi bi-palette-fill"></i> <b>7</b> color tokens</span>
+        <span class="meta-chip"><i class="bi bi-puzzle-fill"></i> <b>6</b> reusable components</span>
+        <span class="meta-chip"><i class="bi bi-rulers"></i> minimal, not exhaustive</span>
       </div>
 
       <h2>Color tokens</h2>
@@ -137,29 +138,29 @@
       <h3>Meta chips</h3>
       <p>Used once per page, right under the dek.</p>
       <div class="meta-row">
-        <span class="meta-chip">⏱ <b>15–20 min</b> read</span>
-        <span class="meta-chip">📋 Prerequisites: <b>Chapter 1</b></span>
-        <span class="meta-chip">📍 Chapter <b>2</b> of 12</span>
+        <span class="meta-chip"><i class="bi bi-clock"></i> <b>15–20 min</b> read</span>
+        <span class="meta-chip"><i class="bi bi-clipboard"></i> Prerequisites: <b>Chapter 1</b></span>
+        <span class="meta-chip"><i class="bi bi-geo-alt-fill"></i> Chapter <b>2</b> of 12</span>
       </div>
 
       <h3>Callout: analogy</h3>
       <p>Blue accent. One per major concept — the plain-language hook before the mechanism.</p>
       <div class="box analogy">
-        <div class="box-label">🏙️ Analogy</div>
+        <div class="box-label"><i class="bi bi-building-fill"></i> Analogy</div>
         <p>Use this box exactly once per concept that needs a non-technical hook. Don't stack two in a row — it dilutes the payoff.</p>
       </div>
 
       <h3>Callout: did-you-know fact</h3>
       <p>Amber accent. Reserved for a genuinely surprising, cited statistic — not general commentary.</p>
       <div class="box fact">
-        <div class="box-label">⚡ Did you know?</div>
+        <div class="box-label"><i class="bi bi-lightning-charge-fill"></i> Did you know?</div>
         <p>Every fact in this box must trace to a source named in that chapter's footer. If it can't be cited, it doesn't go in this box.</p>
       </div>
 
       <h3>Callout: hands-on lab</h3>
       <p>Teal accent, matches the accent color. Used for the "mechanism → lab" handoff — a real command the reader can run.</p>
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself</div>
         <p>Capture a handshake on your own machine:</p>
         <pre><code>sudo tcpdump -i any -n 'tcp port 443' -c 10</code></pre>
       </div>

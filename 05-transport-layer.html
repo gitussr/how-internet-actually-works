@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 5: Transport Layer — How the Internet Actually Works</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -80,9 +81,9 @@
       </p>
 
       <div class="meta-row">
-        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
-        <span class="meta-chip">📋 Prerequisites: <b>Chapter 4</b></span>
-        <span class="meta-chip">📍 Chapter <b>5</b> of 12</span>
+        <span class="meta-chip"><i class="bi bi-clock"></i> <b>20–25 min</b> read</span>
+        <span class="meta-chip"><i class="bi bi-clipboard"></i> Prerequisites: <b>Chapter 4</b></span>
+        <span class="meta-chip"><i class="bi bi-geo-alt-fill"></i> Chapter <b>5</b> of 12</span>
       </div>
 
       <h2>What IP doesn't promise, and one thing it doesn't even have</h2>
@@ -129,7 +130,7 @@
       </p>
 
       <div class="box analogy">
-        <div class="box-label">📮 Analogy: UDP is a postcard</div>
+        <div class="box-label"><i class="bi bi-inbox"></i> Analogy: UDP is a postcard</div>
         <p>
           Drop a postcard in a mailbox and it either arrives or it doesn't —
           nobody signs for it, nobody tells you if it got lost, and you get no
@@ -172,7 +173,7 @@
       </p>
 
       <div class="box fact">
-        <div class="box-label">⚡ Did you know?</div>
+        <div class="box-label"><i class="bi bi-lightning-charge-fill"></i> Did you know?</div>
         <p>
           TCP didn't always back off under congestion. In October 1986, parts of
           the early Internet suffered what's now called a "congestion collapse"
@@ -188,7 +189,7 @@
       </div>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: watch a handshake happen</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: watch a handshake happen</div>
         <p>Start a Wireshark capture, then in a terminal:</p>
         <pre><code>curl -v https://example.com</code></pre>
         <p>
@@ -200,7 +201,7 @@
       </div>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: feel the difference between TCP and UDP</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: feel the difference between TCP and UDP</div>
         <p>Open two terminals. In the first, start a UDP listener:</p>
         <pre><code>nc -u -l 9999</code></pre>
         <p>In the second, send it something:</p>

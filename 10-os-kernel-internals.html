@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Chapter 10: OS &amp; Kernel Internals — How the Internet Actually Works</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;600;700&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -80,9 +81,9 @@
       </p>
 
       <div class="meta-row">
-        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
-        <span class="meta-chip">📋 Prerequisites: <b>Chapters 5 &amp; 7</b></span>
-        <span class="meta-chip">📍 Chapter <b>10</b> of 12</span>
+        <span class="meta-chip"><i class="bi bi-clock"></i> <b>20–25 min</b> read</span>
+        <span class="meta-chip"><i class="bi bi-clipboard"></i> Prerequisites: <b>Chapters 5 &amp; 7</b></span>
+        <span class="meta-chip"><i class="bi bi-geo-alt-fill"></i> Chapter <b>10</b> of 12</span>
       </div>
 
       <h2>The socket: where the network meets your code</h2>
@@ -129,7 +130,7 @@ write()    // send a response back</code></pre>
       </p>
 
       <div class="box analogy">
-        <div class="box-label">📬 Analogy: sockets are mailboxes, the kernel is the sorting room</div>
+        <div class="box-label"><i class="bi bi-inbox-fill"></i> Analogy: sockets are mailboxes, the kernel is the sorting room</div>
         <p>
           A large apartment building has one mail slot where the postal
           carrier drops everything, and a back room where mail actually gets
@@ -184,7 +185,7 @@ write()    // send a response back</code></pre>
       </table>
 
       <div class="box lab">
-        <div class="box-label">🧪 Try it yourself: be both ends of a socket</div>
+        <div class="box-label"><i class="bi bi-flask-fill"></i> Try it yourself: be both ends of a socket</div>
         <p>Save and run this as the server:</p>
         <pre><code>import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -240,7 +241,7 @@ print(s.recv(1024))</code></pre>
       </p>
 
       <div class="box fact">
-        <div class="box-label">⚡ Did you know?</div>
+        <div class="box-label"><i class="bi bi-lightning-charge-fill"></i> Did you know?</div>
         <p>
           Letting arbitrary code run inside the kernel sounds like a security
           nightmare — a bad kernel module can crash or compromise the entire

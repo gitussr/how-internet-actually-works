@@ -43,6 +43,15 @@
 
 * { box-sizing: border-box; }
 
+.bi {
+  font-size: 0.95em;
+  vertical-align: -0.1em;
+  line-height: 1;
+}
+
+.meta-chip .bi { font-size: 1em; }
+.box-label .bi { font-size: 1.05em; }
+
 .sr-only {
   position: absolute;
   width: 1px;
