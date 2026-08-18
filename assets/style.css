@@ -337,6 +337,15 @@ a.locked {
   padding: 1px 7px;
 }
 
+.sidebar-copyright {
+  font-family: "Google Sans", Roboto, sans-serif;
+  font-size: 10px;
+  color: var(--text-faint);
+  margin: 28px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-soft);
+}
+
 /* Main content */
 .main {
   flex: 1;
