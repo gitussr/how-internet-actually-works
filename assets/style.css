@@ -91,6 +91,30 @@
 
 html { scroll-behavior: smooth; }
 
+/* Thin scrollbars everywhere — sidebar, page, code blocks, tables, dropdowns */
+html, .sidebar, .search-results {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
 body {
   margin: 0;
   background: var(--ambient);
