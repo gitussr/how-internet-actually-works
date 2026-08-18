@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 11: Security &amp; Privacy — How the Internet Actually Works</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Mobile-only top bar -->
+  <div class="topbar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+    <span class="name">How the Internet Actually Works</span>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span></button>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span class="name">How the Internet<br>Actually Works</span>
+    </a>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <p class="sidebar-tagline">from electrons to the cloud</p>
+    <div class="search-box"><label for="site-search" class="sr-only">Search the site</label><input type="text" id="site-search" name="q" class="search-input" placeholder="Search the site…" autocomplete="off" spellcheck="false"><div class="search-results"></div></div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Start Here</p>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">·</span> Introduction</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">The Stack</p>
+      <ul class="nav-list">
+        <li><a href="01-electricity-electronics.html"><span class="num">01</span> Electricity &amp; Electronics</a></li>
+        <li><a href="02-physical-media.html"><span class="num">02</span> Physical Media</a></li>
+        <li><a href="03-link-layer.html"><span class="num">03</span> Link Layer</a></li>
+        <li><a href="04-network-layer.html"><span class="num">04</span> Network Layer</a></li>
+        <li><a href="05-transport-layer.html"><span class="num">05</span> Transport Layer</a></li>
+        <li><a href="06-sessions-applications.html"><span class="num">06</span> Sessions &amp; Apps</a></li>
+        <li><a href="07-servers-data-centers.html"><span class="num">07</span> Servers &amp; Data Centers</a></li>
+        <li><a href="08-mobile-cellular.html"><span class="num">08</span> Mobile &amp; Cellular</a></li>
+        <li><a href="09-iot-radio.html"><span class="num">09</span> IoT &amp; Radio</a></li>
+        <li><a href="10-os-kernel-internals.html"><span class="num">10</span> OS &amp; Kernel Internals</a></li>
+        <li><a href="11-security-privacy.html" class="active"><span class="num">11</span> Security &amp; Privacy</a></li>
+        <li><a href="12-global-infrastructure.html"><span class="num">12</span> Global Infrastructure</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Reference</p>
+      <ul class="nav-list">
+        <li><a href="design-system.html"><span class="num">·</span> Design System</a></li>
+        <li><a href="appendices.html"><span class="num">·</span> Appendices &amp; Bibliography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <p class="eyebrow">Chapter 11 · Locking the Doors</p>
+      <h1 class="page-title">Security &amp; Privacy</h1>
+      <p class="dek">
+        Every chapter so far has been about getting data somewhere. This one
+        is about controlling who else gets to see it, touch it, or reach it at
+        all — NAT, firewalls, VPNs, and the cryptography quietly holding all
+        of it together.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
+        <span class="meta-chip">📋 Prerequisites: <b>Chapters 4, 6 &amp; 7</b></span>
+        <span class="meta-chip">📍 Chapter <b>11</b> of 12</span>
+      </div>
+
+      <h2>NAT: stretching a scarce resource into a side effect of security</h2>
+      <p>
+        Chapter 4 introduced private address ranges like <code>192.168.1.x</code>
+        — usable behind your own router, but not routable on the public
+        Internet. <strong>NAT</strong> (Network Address Translation) is what
+        makes that usable at all: your router rewrites the source IP (and
+        port) of every outgoing packet to its own public IP, keeps a
+        translation table remembering which internal device made which
+        request, and rewrites replies back to the correct private address on
+        the way in.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Inside your network</th><th>On the public Internet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>192.168.1.5:51000</td><td>203.0.113.9:40001</td></tr>
+          <tr><td>192.168.1.7:51000</td><td>203.0.113.9:40002</td></tr>
+        </tbody>
+      </table>
+      <p>
+        Notice what that table implies: an unsolicited inbound packet that
+        doesn't match any existing entry has nowhere to go and gets dropped by
+        default. That wasn't NAT's original goal — it was invented purely to
+        stretch a shrinking pool of IPv4 addresses — but as a side effect,
+        every device behind a home router is already unreachable from the
+        outside unless it spoke first. NAT ended up being one of the most
+        widely deployed security boundaries on Earth almost by accident.
+      </p>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: watch NAT rewrite a packet</div>
+        <p>On a Linux box acting as a router (adjust interface names for your setup):</p>
+        <pre><code>sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo tcpdump -i eth0 -n</code></pre>
+        <p>
+          Send traffic from a device behind it and watch the source IP in the
+          capture — it's the router's public address, never the private one
+          that actually sent it. That single rewritten field is the entirety
+          of NAT.
+        </p>
+      </div>
+
+      <h2>Firewalls: deciding what's allowed to pass at all</h2>
+      <p>
+        A <strong>firewall</strong> is a checkpoint that inspects traffic and
+        decides, by rule, what gets through. The simplest kind —
+        <strong>packet filtering</strong> — checks each packet in isolation
+        against a list of allow/deny rules based on IP and port.
+        <strong>Stateful</strong> firewalls go further, tracking which
+        connections you actually initiated and automatically allowing their
+        replies back in — which is precisely the same bookkeeping idea behind
+        NAT's translation table, just applied as policy instead of address
+        rewriting. <strong>Application-layer</strong> firewalls go further
+        still, inspecting the actual content of allowed traffic (like an HTTP
+        request) rather than just its headers.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Type</th><th>Inspects</th><th>Example decision</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Packet filter</td><td>IP, port, protocol</td><td>"Block anything to port 23"</td></tr>
+          <tr><td>Stateful</td><td>Connection state</td><td>"Only allow replies to connections we started"</td></tr>
+          <tr><td>Application-layer</td><td>Actual request content</td><td>"Block this HTTP request — it looks like an attack"</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: block a port, then let it back in</div>
+        <pre><code># Block inbound SSH:
+sudo iptables -A INPUT -p tcp --dport 22 -j DROP
+
+# Confirm it's actually blocked from another machine, then undo it:
+sudo iptables -D INPUT -p tcp --dport 22 -j DROP</code></pre>
+        <p>
+          Run this only on a machine you have another way to reach — a
+          firewall rule that blocks your only way in is a lesson best learned
+          on a disposable virtual machine, not a server you need later today.
+        </p>
+      </div>
+
+      <h2>VPNs: an encrypted tunnel across a network you don't trust</h2>
+      <p>
+        A <strong>VPN</strong> (Virtual Private Network) wraps your traffic in
+        an encrypted tunnel to a trusted endpoint before it touches the
+        network in between. Anyone watching the path your packets actually
+        take — a coffee shop's router, an ISP — sees only encrypted tunnel
+        traffic to that one endpoint; your real destination and the content of
+        your traffic are both hidden inside it. Common implementations include
+        IPSec, OpenVPN, and WireGuard, used both to connect remote workers
+        into a private company network and, more generally, to keep traffic
+        private on networks you don't control.
+      </p>
+
+      <div class="box analogy">
+        <div class="box-label">🚚 Analogy: a VPN is an armored car on a public road</div>
+        <p>
+          Anyone standing on the highway can see an armored truck driving past
+          — the road is public, and so is the fact that a truck is using it.
+          What they can't see is what's inside the truck, because it's sealed
+          until it reaches its destination. A VPN does exactly that to your
+          traffic: the Internet path in between is still visible as "encrypted
+          traffic heading to a VPN server," but the contents and the real
+          destination stay sealed until they reach the other end of the
+          tunnel.
+        </p>
+      </div>
+
+      <h2>Encryption primitives: the math actually doing the locking</h2>
+      <p>
+        Chapter 6 walked through the TLS handshake without dwelling on the
+        cryptography underneath it. Here's the part that was doing the actual
+        locking:
+      </p>
+      <ul>
+        <li>
+          <strong>Symmetric encryption</strong> (like AES) uses one shared key
+          to both encrypt and decrypt. It's fast — fast enough to encrypt a
+          video stream in real time — but both sides need the same secret key
+          already, which raises an obvious problem: how do two strangers agree
+          on a secret key over a connection that isn't secure yet?
+        </li>
+        <li>
+          <strong>Asymmetric encryption</strong> (like RSA or elliptic-curve
+          Diffie-Hellman) solves exactly that problem with two mathematically
+          linked keys — a public one anyone can use to encrypt (or verify a
+          signature), and a private one only its owner holds, needed to
+          decrypt (or sign). It's what makes the TLS key exchange from
+          Chapter 6 possible in the first place: two strangers, no shared
+          secret yet, agreeing on one over a channel someone might be
+          listening to.
+        </li>
+        <li>
+          <strong>Hashing</strong> (like SHA-256) takes any input and produces
+          a fixed-length fingerprint that's practically impossible to reverse
+          or fake a match for — used to verify a file wasn't tampered with, to
+          store passwords without keeping the actual password, and to
+          fingerprint certificates.
+        </li>
+      </ul>
+
+      <div class="box analogy">
+        <div class="box-label">📪 Analogy: two very different kinds of lock</div>
+        <p>
+          Symmetric encryption is an ordinary lockbox — one key both locks and
+          unlocks it, so you'd better already have a safe way to get a copy of
+          that key to the other person. Asymmetric encryption is a mail slot:
+          anyone on the street can drop a letter through the public slot
+          (encrypt with the public key), but only the person holding the
+          private key to the box behind it can ever take mail back out
+          (decrypt). TLS uses the mail slot briefly, just to agree on a
+          lockbox key — then switches to the lockbox for everything else,
+          because it's so much faster.
+        </p>
+      </div>
+
+      <div class="box fact">
+        <div class="box-label">⚡ Did you know?</div>
+        <p>
+          That switch isn't a stylistic choice — it's forced by raw
+          performance. Asymmetric algorithms like RSA are commonly on the
+          order of 100 to 1,000 times slower than symmetric algorithms like
+          AES for the same amount of data. That's precisely why every TLS
+          connection uses asymmetric cryptography for only a few milliseconds
+          — just long enough to safely agree on a symmetric key — and then
+          hands every remaining byte of your video call, download, or web
+          page off to the much faster symmetric cipher for the rest of the
+          conversation.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: run all three primitives from the command line</div>
+        <pre><code># Symmetric: encrypt a file with AES
+openssl enc -aes-256-cbc -in secret.txt -out secret.enc
+
+# Asymmetric: generate a public/private key pair
+ssh-keygen -t ed25519 -f demo_key
+
+# Hashing: fingerprint a file
+sha256sum secret.txt</code></pre>
+        <p>
+          Three completely different mathematical tools, each solving a
+          different piece of the same overall problem — and together, they're
+          the entire cryptographic foundation this whole site's HTTPS
+          padlocks have quietly depended on since Chapter 6.
+        </p>
+      </div>
+
+      <h3>Symmetric vs. asymmetric, side by side</h3>
+      <table>
+        <thead>
+          <tr><th>Property</th><th>Symmetric</th><th>Asymmetric</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Keys involved</td><td>One, shared</td><td>Two, mathematically linked</td></tr>
+          <tr><td>Speed</td><td>Fast</td><td>100–1,000x slower</td></tr>
+          <tr><td>Used for</td><td>Bulk data encryption</td><td>Key exchange, signatures</td></tr>
+          <tr><td>Example algorithm</td><td>AES</td><td>RSA, ECDH</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What's next</h2>
+      <p>
+        We've now covered every layer from a single electron to an encrypted
+        connection between two strangers. The last chapter zooms all the way
+        out: how thousands of independently operated networks, exchange
+        points, and submarine cables combine into the single thing we call
+        the Internet.
+      </p>
+
+      <footer class="site-footer">
+        Sources: RFC 1918, RFC 3022 (NAT); Wikipedia — "Network address
+        translation," "Firewall (computing)," "Virtual private network,"
+        "Symmetric-key algorithm," "Public-key cryptography," "SHA-2"; RFC
+        8446 (TLS 1.3).
+      </footer>
+
+      <div class="pager">
+        <a href="10-os-kernel-internals.html">← Chapter 10: OS &amp; Kernel Internals</a>
+        <a href="12-global-infrastructure.html">Chapter 12: Global Infrastructure →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="assets/nav.js"></script>
+<script src="assets/search-data.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>

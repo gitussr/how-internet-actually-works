@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5: Transport Layer — How the Internet Actually Works</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Mobile-only top bar -->
+  <div class="topbar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+    <span class="name">How the Internet Actually Works</span>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span></button>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span class="name">How the Internet<br>Actually Works</span>
+    </a>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <p class="sidebar-tagline">from electrons to the cloud</p>
+    <div class="search-box"><label for="site-search" class="sr-only">Search the site</label><input type="text" id="site-search" name="q" class="search-input" placeholder="Search the site…" autocomplete="off" spellcheck="false"><div class="search-results"></div></div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Start Here</p>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">·</span> Introduction</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">The Stack</p>
+      <ul class="nav-list">
+        <li><a href="01-electricity-electronics.html"><span class="num">01</span> Electricity &amp; Electronics</a></li>
+        <li><a href="02-physical-media.html"><span class="num">02</span> Physical Media</a></li>
+        <li><a href="03-link-layer.html"><span class="num">03</span> Link Layer</a></li>
+        <li><a href="04-network-layer.html"><span class="num">04</span> Network Layer</a></li>
+        <li><a href="05-transport-layer.html" class="active"><span class="num">05</span> Transport Layer</a></li>
+        <li><a href="06-sessions-applications.html"><span class="num">06</span> Sessions &amp; Apps</a></li>
+        <li><a href="07-servers-data-centers.html"><span class="num">07</span> Servers &amp; Data Centers</a></li>
+        <li><a href="08-mobile-cellular.html"><span class="num">08</span> Mobile &amp; Cellular</a></li>
+        <li><a href="09-iot-radio.html"><span class="num">09</span> IoT &amp; Radio</a></li>
+        <li><a href="10-os-kernel-internals.html"><span class="num">10</span> OS &amp; Kernel Internals</a></li>
+        <li><a href="11-security-privacy.html"><span class="num">11</span> Security &amp; Privacy</a></li>
+        <li><a href="12-global-infrastructure.html"><span class="num">12</span> Global Infrastructure</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Reference</p>
+      <ul class="nav-list">
+        <li><a href="design-system.html"><span class="num">·</span> Design System</a></li>
+        <li><a href="appendices.html"><span class="num">·</span> Appendices &amp; Bibliography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <p class="eyebrow">Chapter 5 · Making Delivery Reliable (Or Not)</p>
+      <h1 class="page-title">Transport Layer</h1>
+      <p class="dek">
+        IP promises nothing except a best effort. Packets can arrive out of
+        order, duplicated, or not at all. The transport layer is where the
+        Internet decides whether that's actually a problem — and builds the
+        machinery to fix it when it is.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip">⏱ <b>20–25 min</b> read</span>
+        <span class="meta-chip">📋 Prerequisites: <b>Chapter 4</b></span>
+        <span class="meta-chip">📍 Chapter <b>5</b> of 12</span>
+      </div>
+
+      <h2>What IP doesn't promise, and one thing it doesn't even have</h2>
+      <p>
+        Chapter 4 got a packet from any device to any other, one router hop at a
+        time. But IP's contract is deliberately thin: it's <strong>best-effort</strong>
+        delivery. Nothing in the IP layer guarantees packets arrive in the order
+        they were sent, guarantees they arrive at all, or even guarantees they
+        don't arrive twice. Routers drop packets constantly under congestion, and
+        IP shrugs and moves on. Something else has to decide whether that's
+        acceptable.
+      </p>
+      <p>
+        There's also a gap IP never tries to fill: an IP address identifies a
+        <em>machine</em>, not a specific conversation happening on it. A single
+        server can run a web server, a mail server, and an SSH daemon
+        simultaneously, all reachable at the same IP address. The transport
+        layer adds <strong>port numbers</strong> — a 16-bit number tacked onto
+        every connection — so an incoming packet can be handed to the right
+        application. An IP address plus a port number together is called a
+        <strong>socket</strong>, and it's the actual endpoint every network
+        conversation happens between.
+      </p>
+
+      <h2>UDP: send it and hope</h2>
+      <p>
+        <strong>UDP</strong> (User Datagram Protocol) is the transport layer at
+        its most honest: it adds a source port, a destination port, and a
+        checksum to catch corruption — and nothing else. No handshake, no
+        ordering, no retransmission. If a UDP packet is lost, UDP will never
+        notice, and neither will the network. Whoever's using it has to decide
+        for themselves whether that matters.
+      </p>
+      <p>
+        That sounds like a downside until you look at what actually chooses UDP:
+        DNS lookups (Chapter 6) are small enough to fit in one packet, so there's
+        nothing to reassemble and a lost query is trivially cheap to just ask
+        again. Live video and voice calls choose UDP too, for the opposite
+        reason most people expect — a dropped video frame that arrives late is
+        <em>useless</em>, so retransmitting it would only add delay to a stream
+        that's supposed to be live. Better to drop it and move on to the next
+        frame than hold up everything waiting for a repeat that's already
+        obsolete by the time it arrives.
+      </p>
+
+      <div class="box analogy">
+        <div class="box-label">📮 Analogy: UDP is a postcard</div>
+        <p>
+          Drop a postcard in a mailbox and it either arrives or it doesn't —
+          nobody signs for it, nobody tells you if it got lost, and you get no
+          confirmation either way. That's UDP: fast, low-overhead, and entirely
+          indifferent to whether any individual message actually makes it.
+        </p>
+      </div>
+
+      <h2>TCP: reliable delivery over an unreliable network</h2>
+      <p>
+        <strong>TCP</strong> (Transmission Control Protocol) takes the opposite
+        approach: it turns IP's best-effort delivery into what looks, from the
+        application's point of view, like a reliable, ordered stream of bytes —
+        entirely through software bookkeeping layered on top of the same
+        unreliable packets UDP uses. Every TCP connection starts with a
+        <strong>three-way handshake</strong>:
+      </p>
+      <ul class="stack">
+        <li><span class="layer-name">SYN</span><span class="layer-desc">client: "I'd like to start a connection, here's my starting sequence number"</span><span class="layer-tag">1</span></li>
+        <li><span class="layer-name">SYN-ACK</span><span class="layer-desc">server: "acknowledged, here's mine"</span><span class="layer-tag">2</span></li>
+        <li><span class="layer-name">ACK</span><span class="layer-desc">client: "acknowledged — connection established"</span><span class="layer-tag">3</span></li>
+      </ul>
+      <p>
+        Those sequence numbers aren't cosmetic — every byte sent over the
+        connection is numbered, so the receiver can detect gaps, put
+        out-of-order packets back in order, and send back acknowledgments (ACKs)
+        confirming what's arrived. If the sender doesn't see an ACK for data
+        within a timeout, it assumes the packet was lost and retransmits it. The
+        entire illusion of a reliable connection is built from nothing but
+        numbered packets and a willingness to resend.
+      </p>
+      <p>
+        Two more mechanisms round out TCP: <strong>flow control</strong>, where
+        the receiver advertises how much buffer space it has left so a fast
+        sender doesn't overwhelm a slow receiver, and <strong>congestion
+        control</strong>, where the sender deliberately starts slow and ramps up
+        its sending rate gradually — backing off sharply the moment it detects
+        packet loss, on the assumption that loss means the network itself is
+        overloaded, not just the receiver.
+      </p>
+
+      <div class="box fact">
+        <div class="box-label">⚡ Did you know?</div>
+        <p>
+          TCP didn't always back off under congestion. In October 1986, parts of
+          the early Internet suffered what's now called a "congestion collapse"
+          — throughput on one link dropped by a factor of roughly 1,000, as
+          retransmissions of already-lost packets piled on top of the congestion
+          that caused the loss in the first place, making everything worse.
+          Engineer Van Jacobson's fix, published in 1988, introduced the
+          slow-start and congestion-avoidance algorithms that make TCP back off
+          aggressively the instant it detects loss. In some modernized form,
+          that 1988 fix is still running inside nearly every TCP connection on
+          Earth today.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: watch a handshake happen</div>
+        <p>Start a Wireshark capture, then in a terminal:</p>
+        <pre><code>curl -v https://example.com</code></pre>
+        <p>
+          Filter the capture for <code>tcp.port == 443</code> and you'll see the
+          exact three packets above — SYN, SYN-ACK, ACK — before a single byte
+          of the actual HTTPS request goes out. Everything covered in this
+          chapter is sitting right there in three small packets.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: feel the difference between TCP and UDP</div>
+        <p>Open two terminals. In the first, start a UDP listener:</p>
+        <pre><code>nc -u -l 9999</code></pre>
+        <p>In the second, send it something:</p>
+        <pre><code>echo "hello" | nc -u &lt;host&gt; 9999</code></pre>
+        <p>
+          Notice there's no connection setup at all — the message just goes.
+          Now try the same thing without <code>-u</code> (plain TCP) and watch
+          Wireshark: you'll see the three-way handshake happen before your
+          "hello" is allowed to send, and a graceful close (FIN packets) after.
+        </p>
+      </div>
+
+      <h3>TCP vs. UDP, side by side</h3>
+      <table>
+        <thead>
+          <tr><th>Property</th><th>TCP</th><th>UDP</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Connection</td><td>Connection-oriented (handshake)</td><td>Connectionless</td></tr>
+          <tr><td>Reliability</td><td>Guaranteed, ordered delivery</td><td>Best-effort, no guarantees</td></tr>
+          <tr><td>Header overhead</td><td>20+ bytes</td><td>8 bytes</td></tr>
+          <tr><td>Typical ports</td><td>80/443 (HTTP/S), 22 (SSH)</td><td>53 (DNS), 67/68 (DHCP)</td></tr>
+          <tr><td>Chooses it because</td><td>Correctness matters more than latency</td><td>Latency matters more than occasional loss</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What's next</h2>
+      <p>
+        We now have two kinds of pipe: a reliable ordered stream (TCP) and a
+        fast, disposable datagram (UDP). Neither one, on its own, means
+        anything to a human — nobody browses the web by sending raw TCP bytes
+        by hand. Chapter 6 covers the application-layer protocols built on top
+        of these transports: HTTP and HTTPS, DNS, SSH, WebSockets, and email —
+        the layer where the Internet finally starts looking like something you
+        actually use.
+      </p>
+
+      <footer class="site-footer">
+        Sources: RFC 793 (TCP); RFC 768 (UDP); Van Jacobson &amp; Michael J.
+        Karels, "Congestion Avoidance and Control" (1988); Wikipedia —
+        "Transmission Control Protocol," "User Datagram Protocol," "TCP
+        congestion control," "Network congestion."
+      </footer>
+
+      <div class="pager">
+        <a href="04-network-layer.html">← Chapter 4: Network Layer</a>
+        <a href="06-sessions-applications.html">Chapter 6: Sessions &amp; Applications →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="assets/nav.js"></script>
+<script src="assets/search-data.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>

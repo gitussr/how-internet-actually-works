@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 9: IoT &amp; Radio Devices — How the Internet Actually Works</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Mobile-only top bar -->
+  <div class="topbar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+    <span class="name">How the Internet Actually Works</span>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span></button>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span class="name">How the Internet<br>Actually Works</span>
+    </a>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <p class="sidebar-tagline">from electrons to the cloud</p>
+    <div class="search-box"><label for="site-search" class="sr-only">Search the site</label><input type="text" id="site-search" name="q" class="search-input" placeholder="Search the site…" autocomplete="off" spellcheck="false"><div class="search-results"></div></div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Start Here</p>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">·</span> Introduction</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">The Stack</p>
+      <ul class="nav-list">
+        <li><a href="01-electricity-electronics.html"><span class="num">01</span> Electricity &amp; Electronics</a></li>
+        <li><a href="02-physical-media.html"><span class="num">02</span> Physical Media</a></li>
+        <li><a href="03-link-layer.html"><span class="num">03</span> Link Layer</a></li>
+        <li><a href="04-network-layer.html"><span class="num">04</span> Network Layer</a></li>
+        <li><a href="05-transport-layer.html"><span class="num">05</span> Transport Layer</a></li>
+        <li><a href="06-sessions-applications.html"><span class="num">06</span> Sessions &amp; Apps</a></li>
+        <li><a href="07-servers-data-centers.html"><span class="num">07</span> Servers &amp; Data Centers</a></li>
+        <li><a href="08-mobile-cellular.html"><span class="num">08</span> Mobile &amp; Cellular</a></li>
+        <li><a href="09-iot-radio.html" class="active"><span class="num">09</span> IoT &amp; Radio</a></li>
+        <li><a href="10-os-kernel-internals.html"><span class="num">10</span> OS &amp; Kernel Internals</a></li>
+        <li><a href="11-security-privacy.html"><span class="num">11</span> Security &amp; Privacy</a></li>
+        <li><a href="12-global-infrastructure.html"><span class="num">12</span> Global Infrastructure</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Reference</p>
+      <ul class="nav-list">
+        <li><a href="design-system.html"><span class="num">·</span> Design System</a></li>
+        <li><a href="appendices.html"><span class="num">·</span> Appendices &amp; Bibliography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <p class="eyebrow">Chapter 9 · When the Network Gets Tiny</p>
+      <h1 class="page-title">IoT &amp; Radio Devices</h1>
+      <p class="dek">
+        Not every radio device is trying to join the Internet. Some just need
+        to blink a light, ring a doorbell, or bounce a signal off an aircraft.
+        This chapter covers the small stuff, and the radio use that isn't
+        really networking at all.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip">⏱ <b>15–20 min</b> read</span>
+        <span class="meta-chip">📋 Prerequisites: <b>Chapters 2 &amp; 8</b></span>
+        <span class="meta-chip">📍 Chapter <b>9</b> of 12</span>
+      </div>
+
+      <h2>A different constraint: not speed, but survival</h2>
+      <p>
+        Every wireless technology so far in this site has chased more
+        bandwidth: Wi-Fi, then cellular, then 5G, each one squeezing more data
+        through the air per second. IoT devices mostly don't care about any of
+        that. A soil moisture sensor in a field, a smart light bulb, a fitness
+        tracker's heart-rate monitor — these need to run for months or years on
+        a battery smaller than a coin, or cost pennies to manufacture. Given
+        that constraint, burning power to join a Wi-Fi network and hold a
+        full TCP/IP stack open is often not an option at all. A whole family of
+        protocols exists specifically to solve for battery life and cost
+        instead of speed.
+      </p>
+
+      <h2>Short-range, low-power IoT protocols</h2>
+      <p>
+        <strong>Bluetooth Low Energy (BLE)</strong> is a stripped-down variant
+        of Bluetooth built to sleep almost all the time and wake only for
+        short, infrequent bursts — a fitness tracker syncing your heart rate
+        doesn't need a persistent connection, just a periodic check-in.
+        <strong>Zigbee</strong> and <strong>6LoWPAN</strong> take a different
+        approach for home automation: devices form a <em>mesh</em>, relaying
+        each other's messages so a signal can hop from a sensor in the garage
+        to a hub in the living room without either one needing enough power to
+        reach that far directly. <strong>LoRaWAN</strong> goes the opposite
+        direction entirely — very low data rate, but kilometers of range on
+        minimal power, suited to things like agricultural sensors spread
+        across a farm.
+      </p>
+      <table>
+        <thead>
+          <tr><th>Protocol</th><th>Typical range</th><th>Data rate</th><th>Power use</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bluetooth LE</td><td>~10–30 m</td><td>Low (kbps–Mbps)</td><td>Very low, sleeps often</td></tr>
+          <tr><td>Zigbee / 6LoWPAN</td><td>~10–20 m per hop (mesh extends it)</td><td>Low</td><td>Very low</td></tr>
+          <tr><td>LoRaWAN</td><td>Several km</td><td>Very low (bps–kbps)</td><td>Extremely low</td></tr>
+        </tbody>
+      </table>
+
+      <div class="box analogy">
+        <div class="box-label">🌧️ Analogy: IoT traffic is raindrops, not a river</div>
+        <p>
+          A video call needs a steady, continuous flow of data — a river. An
+          IoT sensor sends a tiny reading every few minutes and then goes back
+          to sleep — a raindrop, individually tiny, occasionally missed without
+          consequence, and never expected to form a continuous stream. Nearly
+          every design choice in this chapter's protocols follows from
+          optimizing for raindrops instead of rivers.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: see the raindrops around you</div>
+        <p>
+          Most laptops and phones can scan for nearby Bluetooth Low Energy
+          advertisements — the periodic "here I am" broadcasts BLE devices send
+          out even when not connected to anything:
+        </p>
+        <pre><code># Linux, using BlueZ:
+sudo bluetoothctl
+[bluetooth]# scan on</code></pre>
+        <p>
+          Leave it running for a minute in almost any populated space and
+          you'll likely see several devices — headphones, fitness trackers,
+          smart home sensors — quietly broadcasting their presence to no one
+          in particular, exactly like the raindrops in the analogy above.
+        </p>
+      </div>
+
+      <h2>Remote controls: the "radio" device that isn't</h2>
+      <p>
+        A television remote doesn't use radio at all — it uses
+        <strong>infrared light</strong>, just below the frequencies your eyes
+        can see. Press a button and it blinks a specific pattern of pulses at
+        an IR LED; the TV's sensor reads that pattern and matches it to a
+        command. There's no addressing, no acknowledgment, no network of any
+        kind — just a one-way blast of light that only works if the remote is
+        pointed roughly at the receiver. It's about as close to "no protocol
+        at all" as a wireless device gets. Garage door openers and car key
+        fobs, by contrast, use actual radio (not light), which is why they
+        work without a clear line of sight the way an IR remote doesn't.
+      </p>
+
+      <h2>Walkie-talkies: radio with no network underneath it</h2>
+      <p>
+        A walkie-talkie strips away everything this site has built up chapter
+        by chapter — no IP address, no MAC address, no handshake, not even a
+        tower. Two units simply transmit and receive on the same shared radio
+        frequency, and whoever is listening on that frequency hears whoever is
+        transmitting. It's the most direct form of long-distance communication
+        possible: a wave, sent into the air, with nothing standing between the
+        sender and anyone tuned to listen. Every layer this site has covered
+        since Chapter 3 exists to add exactly what a walkie-talkie doesn't
+        have: addressing, routing, and privacy.
+      </p>
+
+      <h2>Radar: not communication at all</h2>
+      <p>
+        Everything else in this chapter sends information <em>to</em> someone.
+        Radar — Radio Detection and Ranging — does something different
+        entirely: it transmits a pulse and listens for its own echo bouncing
+        off a distant object, using the round-trip delay to calculate distance.
+        Nobody is receiving a message; the "message" is being used purely as a
+        measuring stick.
+      </p>
+      <ul class="stack">
+        <li><span class="layer-name">Transmit</span><span class="layer-desc">antenna sends a short radio pulse</span><span class="layer-tag">1</span></li>
+        <li><span class="layer-name">Travel</span><span class="layer-desc">pulse reaches an object and reflects</span><span class="layer-tag">2</span></li>
+        <li><span class="layer-name">Echo</span><span class="layer-desc">reflected pulse returns to the antenna</span><span class="layer-tag">3</span></li>
+        <li><span class="layer-name">Calculate</span><span class="layer-desc">distance from the round-trip time</span><span class="layer-tag">4</span></li>
+      </ul>
+
+      <div class="box fact">
+        <div class="box-label">⚡ Did you know?</div>
+        <p>
+          The math behind radar is the exact same physics behind Chapter 2's
+          fiber-optic latency floor, just measured through open air instead of
+          glass: distance equals the speed of light multiplied by the
+          round-trip time, divided by two. Air traffic control, weather radar,
+          and a car's collision-avoidance system are all, underneath, running
+          the same simple equation Chapter 2 used to calculate the minimum
+          possible latency between New York and London.
+        </p>
+      </div>
+
+      <h3>How networked is each of these, really?</h3>
+      <table>
+        <thead>
+          <tr><th>Technology</th><th>Two-way?</th><th>Addressed to a device?</th><th>Needs infrastructure?</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Zigbee / BLE mesh</td><td>Yes</td><td>Yes</td><td>Minimal (peer devices)</td></tr>
+          <tr><td>LoRaWAN</td><td>Yes</td><td>Yes</td><td>A gateway</td></tr>
+          <tr><td>IR remote</td><td>No — one-way</td><td>No — just a code</td><td>None</td></tr>
+          <tr><td>Walkie-talkie</td><td>Yes</td><td>No — shared channel</td><td>None</td></tr>
+          <tr><td>Radar</td><td>N/A — not communication</td><td>N/A</td><td>None</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What's next</h2>
+      <p>
+        We've now covered every layer of getting a signal from one place to
+        another, wired or wireless, networked or not. What we haven't covered
+        is what happens the instant that signal arrives at a computer — how the
+        operating system actually catches an incoming packet and hands it to
+        the right program. Chapter 10 goes inside the machine itself: sockets,
+        interrupts, and the kernel code every earlier chapter has been quietly
+        relying on.
+      </p>
+
+      <footer class="site-footer">
+        Sources: Wikipedia — "Bluetooth Low Energy," "Zigbee," "6LoWPAN,"
+        "LoRa," "Infrared," "Radar," "Walkie-talkie."
+      </footer>
+
+      <div class="pager">
+        <a href="08-mobile-cellular.html">← Chapter 8: Mobile &amp; Cellular</a>
+        <a href="10-os-kernel-internals.html">Chapter 10: OS &amp; Kernel Internals →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="assets/nav.js"></script>
+<script src="assets/search-data.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Sessions &amp; Applications — How the Internet Actually Works</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Mobile-only top bar -->
+  <div class="topbar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+    <span class="name">How the Internet Actually Works</span>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span></button>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span class="name">How the Internet<br>Actually Works</span>
+    </a>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <p class="sidebar-tagline">from electrons to the cloud</p>
+    <div class="search-box"><label for="site-search" class="sr-only">Search the site</label><input type="text" id="site-search" name="q" class="search-input" placeholder="Search the site…" autocomplete="off" spellcheck="false"><div class="search-results"></div></div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Start Here</p>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">·</span> Introduction</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">The Stack</p>
+      <ul class="nav-list">
+        <li><a href="01-electricity-electronics.html"><span class="num">01</span> Electricity &amp; Electronics</a></li>
+        <li><a href="02-physical-media.html"><span class="num">02</span> Physical Media</a></li>
+        <li><a href="03-link-layer.html"><span class="num">03</span> Link Layer</a></li>
+        <li><a href="04-network-layer.html"><span class="num">04</span> Network Layer</a></li>
+        <li><a href="05-transport-layer.html"><span class="num">05</span> Transport Layer</a></li>
+        <li><a href="06-sessions-applications.html" class="active"><span class="num">06</span> Sessions &amp; Apps</a></li>
+        <li><a href="07-servers-data-centers.html"><span class="num">07</span> Servers &amp; Data Centers</a></li>
+        <li><a href="08-mobile-cellular.html"><span class="num">08</span> Mobile &amp; Cellular</a></li>
+        <li><a href="09-iot-radio.html"><span class="num">09</span> IoT &amp; Radio</a></li>
+        <li><a href="10-os-kernel-internals.html"><span class="num">10</span> OS &amp; Kernel Internals</a></li>
+        <li><a href="11-security-privacy.html"><span class="num">11</span> Security &amp; Privacy</a></li>
+        <li><a href="12-global-infrastructure.html"><span class="num">12</span> Global Infrastructure</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Reference</p>
+      <ul class="nav-list">
+        <li><a href="design-system.html"><span class="num">·</span> Design System</a></li>
+        <li><a href="appendices.html"><span class="num">·</span> Appendices &amp; Bibliography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <p class="eyebrow">Chapter 6 · Where the Internet Starts Looking Familiar</p>
+      <h1 class="page-title">Sessions &amp; Applications</h1>
+      <p class="dek">
+        TCP hands you a reliable pipe and nothing else — it has no idea whether
+        the bytes flowing through it are a web page, a password, or a chat
+        message. HTTP, TLS, DNS, SSH, and email are the agreements that turn
+        that pipe into something you'd actually recognize as the Internet.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip">⏱ <b>25–30 min</b> read</span>
+        <span class="meta-chip">📋 Prerequisites: <b>Chapter 5</b></span>
+        <span class="meta-chip">📍 Chapter <b>6</b> of 12</span>
+      </div>
+
+      <h2>One pipe, many languages</h2>
+      <p>
+        Everything in this chapter runs on top of the TCP or UDP connections
+        Chapter 5 built. None of it changes how packets travel — it's all just
+        agreed-upon patterns of bytes sent back and forth over a connection that
+        already exists. A web browser and a mail client use the exact same kind
+        of TCP socket; the only difference is which words they've agreed to say
+        to each other once it's open.
+      </p>
+
+      <h2>HTTP: the web's request-response protocol</h2>
+      <p>
+        HTTP is about as simple as protocols get: a client sends a plain-text
+        request, a server sends back a plain-text response, and the connection
+        can be reused or closed. A real request looks close to this:
+      </p>
+      <pre><code>GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: curl/8.4.0
+Accept: */*</code></pre>
+      <p>and the response:</p>
+      <pre><code>HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 1256
+
+&lt;html&gt;...&lt;/html&gt;</code></pre>
+      <p>
+        That's it — a method (<code>GET</code>, <code>POST</code>, and others),
+        a path, some headers, and optionally a body. The problem is that every
+        byte of this is sent in the clear. Anyone positioned between you and the
+        server — a coffee shop's Wi-Fi router, an ISP, anyone on the same
+        network — can read it, including passwords typed into an unencrypted
+        login form. <strong>HTTPS</strong> is the fix: it's the exact same HTTP
+        conversation, just wrapped inside an encrypted tunnel before it starts,
+        over port 443 instead of port 80.
+      </p>
+
+      <h2>TLS: the handshake that makes HTTPS secure</h2>
+      <p>
+        That encrypted tunnel is built by <strong>TLS</strong> (Transport Layer
+        Security), and it has three jobs at once: keep the conversation private
+        (confidentiality), detect if it's been tampered with (integrity), and
+        prove the server is actually who it claims to be (authentication).
+        Simplified, the handshake goes:
+      </p>
+      <ul class="stack">
+        <li><span class="layer-name">Client Hello</span><span class="layer-desc">"here's what encryption I support"</span><span class="layer-tag">1</span></li>
+        <li><span class="layer-name">Server Hello + Certificate</span><span class="layer-desc">"here's what we'll use, and proof of who I am"</span><span class="layer-tag">2</span></li>
+        <li><span class="layer-name">Key exchange</span><span class="layer-desc">both sides derive the same secret session key</span><span class="layer-tag">3</span></li>
+        <li><span class="layer-name">Encrypted session begins</span><span class="layer-desc">everything from here is unreadable to anyone else</span><span class="layer-tag">4</span></li>
+      </ul>
+      <p>
+        The server's identity check relies on a <strong>certificate</strong> —
+        signed by a Certificate Authority your browser already trusts — which is
+        why a browser warns you loudly when a certificate doesn't check out
+        instead of failing silently. And modern TLS almost always uses a fresh,
+        temporary key for every single connection (ephemeral key exchange), which
+        means even if a server's long-term private key were ever stolen, past
+        conversations that already happened can't be decrypted retroactively —
+        a property called forward secrecy.
+      </p>
+
+      <div class="box analogy">
+        <div class="box-label">🪪 Analogy: TLS is checking ID before whispering</div>
+        <p>
+          Meeting a stranger to exchange something sensitive, you'd check their
+          ID against something you already trust before agreeing on a private
+          code language to use between yourselves for the rest of the
+          conversation. That's the TLS handshake exactly: verify identity first
+          (the certificate), then agree on a shared secret (the key exchange),
+          then switch to that private language (symmetric encryption) for
+          everything else.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: watch a TLS handshake and inspect a certificate</div>
+        <pre><code>openssl s_client -connect example.com:443</code></pre>
+        <p>
+          You'll see the negotiated protocol version, the cipher chosen, and
+          the full certificate chain right in the terminal. Compare it against:
+        </p>
+        <pre><code>curl -v http://example.com   # watch headers fly by in plain text
+curl -v https://example.com  # same request, now wrapped in TLS</code></pre>
+      </div>
+
+      <h2>SSH: the same trust model, for logging in remotely</h2>
+      <p>
+        SSH (Secure Shell) applies a similar idea to remote logins: it
+        cryptographically verifies the server's identity (your terminal's
+        warning about "the authenticity of host X can't be established" is SSH
+        asking you to trust a new server's fingerprint), negotiates an encrypted
+        channel, and then authenticates <em>you</em> — usually via a password or,
+        far more securely, a public/private key pair where the private key never
+        leaves your machine. Once established, that one encrypted channel can
+        carry a remote shell, forward other ports, or transfer files (SFTP) —
+        all inside the same connection.
+      </p>
+
+      <h2>WebSockets: turning a request into a standing conversation</h2>
+      <p>
+        HTTP was built for short request-response exchanges, but some
+        applications — chat, live dashboards, multiplayer games — need a
+        channel that stays open and can send data in <em>either</em> direction
+        at any time. WebSockets get there with a clever trick: the connection
+        starts as an ordinary HTTP request carrying an <code>Upgrade:
+        websocket</code> header. If the server agrees, it responds
+        <code>101 Switching Protocols</code>, and from that point on the exact
+        same TCP connection stops speaking HTTP and becomes a raw, full-duplex
+        channel — no more request/response, just data flowing whenever either
+        side wants to send it.
+      </p>
+
+      <h2>DNS: turning names into addresses</h2>
+      <p>
+        Every protocol so far assumes you already have an IP address to connect
+        to. DNS is what gets you there from a name like <code>example.com</code>.
+        It's organized as a hierarchy — a <strong>root</strong>, then
+        <strong>top-level domains</strong> (<code>.com</code>, <code>.org</code>),
+        then the <strong>authoritative server</strong> for the specific domain —
+        and a <strong>recursive resolver</strong> (often run by your ISP, or a
+        public one like <code>8.8.8.8</code>) walks that hierarchy on your
+        behalf so your device doesn't have to, caching answers along the way so
+        the same lookup doesn't have to happen twice.
+      </p>
+
+      <div class="box fact">
+        <div class="box-label">⚡ Did you know?</div>
+        <p>
+          There are only 13 named DNS root server addresses in the entire
+          world — a limit baked into how the original root hint responses were
+          sized. But that number is deceptive: nearly every one of those 13
+          names actually corresponds to <strong>hundreds</strong> of physical
+          servers scattered across the globe, all sharing the same address via
+          a routing technique called anycast (Chapter 12), where the network
+          itself sends your query to whichever copy happens to be nearest. The
+          "13 root servers" that hold up the entire domain name system are, in
+          reality, over a thousand machines wearing 13 name tags.
+        </p>
+      </div>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: walk the DNS hierarchy by hand</div>
+        <pre><code>dig +trace example.com</code></pre>
+        <p>
+          This deliberately skips your resolver's shortcuts and performs the
+          full walk itself — root, then <code>.com</code>'s servers, then
+          <code>example.com</code>'s own authoritative servers — printing every
+          hop. It's the same hierarchy described above, made visible one query
+          at a time.
+        </p>
+      </div>
+
+      <h2>SMTP: the postal service for email</h2>
+      <p>
+        Sending email uses <strong>SMTP</strong> (Simple Mail Transfer
+        Protocol) — a push protocol, where your mail server actively hands the
+        message off to the recipient's mail server, often hopping through
+        several intermediate servers along the way, much like a letter passing
+        through multiple sorting facilities. Retrieving mail is a separate
+        problem, handled by different protocols entirely (IMAP or POP), which is
+        why "sending" and "receiving" email genuinely run on different
+        machinery under the hood, even though your inbox makes them look like
+        one continuous experience.
+      </p>
+
+      <h3>The protocols, side by side</h3>
+      <table>
+        <thead>
+          <tr><th>Protocol</th><th>Transport</th><th>Default port</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>HTTP</td><td>TCP</td><td>80</td><td>Request/response, unencrypted</td></tr>
+          <tr><td>HTTPS</td><td>TCP (+ TLS)</td><td>443</td><td>Request/response, encrypted</td></tr>
+          <tr><td>SSH</td><td>TCP</td><td>22</td><td>Encrypted remote login/file transfer</td></tr>
+          <tr><td>WebSocket</td><td>TCP (via HTTP upgrade)</td><td>80 / 443</td><td>Persistent two-way channel</td></tr>
+          <tr><td>DNS</td><td>UDP (falls back to TCP)</td><td>53</td><td>Name → IP resolution</td></tr>
+          <tr><td>SMTP</td><td>TCP</td><td>25 / 587</td><td>Sending (pushing) email</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What's next</h2>
+      <p>
+        We now have the full request-to-response journey covered — from an
+        electron to a rendered web page. But none of these protocols run
+        themselves: something has to actually listen on port 443, hold a
+        database, and balance load across thousands of simultaneous requests.
+        Chapter 7 goes behind the application layer into the servers, databases,
+        and cloud infrastructure that answer every request this chapter
+        described.
+      </p>
+
+      <footer class="site-footer">
+        Sources: RFC 9110 (HTTP semantics); RFC 8446 (TLS 1.3); RFC 4251 (SSH);
+        RFC 6455 (WebSocket); RFC 1035 (DNS); RFC 5321 (SMTP); IANA Root
+        Server Technical Operations Assn., root server system documentation;
+        Wikipedia — "Hypertext Transfer Protocol," "Transport Layer Security,"
+        "Domain Name System," "Anycast."
+      </footer>
+
+      <div class="pager">
+        <a href="05-transport-layer.html">← Chapter 5: Transport Layer</a>
+        <a href="07-servers-data-centers.html">Chapter 7: Servers &amp; Data Centers →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="assets/nav.js"></script>
+<script src="assets/search-data.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>

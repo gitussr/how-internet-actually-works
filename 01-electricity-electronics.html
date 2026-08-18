@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1: Electricity &amp; Electronics — How the Internet Actually Works</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Mobile-only top bar -->
+  <div class="topbar">
+    <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+    <span class="name">How the Internet Actually Works</span>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <button class="nav-toggle" aria-label="Toggle navigation"><span class="bar"></span></button>
+  </div>
+  <div class="sidebar-overlay"></div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="index.html" class="sidebar-brand">
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="5.5" r="2" fill="white"/><circle cx="5.5" cy="17" r="2" fill="white"/><circle cx="18.5" cy="17" r="2" fill="white"/><path d="M12 7.5 5.5 15M12 7.5 18.5 15M5.5 17H18.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+      <span class="name">How the Internet<br>Actually Works</span>
+    </a>
+    <button class="theme-toggle" aria-label="Toggle color theme" title="Toggle color theme"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+    <p class="sidebar-tagline">from electrons to the cloud</p>
+    <div class="search-box"><label for="site-search" class="sr-only">Search the site</label><input type="text" id="site-search" name="q" class="search-input" placeholder="Search the site…" autocomplete="off" spellcheck="false"><div class="search-results"></div></div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Start Here</p>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="num">·</span> Introduction</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">The Stack</p>
+      <ul class="nav-list">
+        <li><a href="01-electricity-electronics.html" class="active"><span class="num">01</span> Electricity &amp; Electronics</a></li>
+        <li><a href="02-physical-media.html"><span class="num">02</span> Physical Media</a></li>
+        <li><a href="03-link-layer.html"><span class="num">03</span> Link Layer</a></li>
+        <li><a href="04-network-layer.html"><span class="num">04</span> Network Layer</a></li>
+        <li><a href="05-transport-layer.html"><span class="num">05</span> Transport Layer</a></li>
+        <li><a href="06-sessions-applications.html"><span class="num">06</span> Sessions &amp; Apps</a></li>
+        <li><a href="07-servers-data-centers.html"><span class="num">07</span> Servers &amp; Data Centers</a></li>
+        <li><a href="08-mobile-cellular.html"><span class="num">08</span> Mobile &amp; Cellular</a></li>
+        <li><a href="09-iot-radio.html"><span class="num">09</span> IoT &amp; Radio</a></li>
+        <li><a href="10-os-kernel-internals.html"><span class="num">10</span> OS &amp; Kernel Internals</a></li>
+        <li><a href="11-security-privacy.html"><span class="num">11</span> Security &amp; Privacy</a></li>
+        <li><a href="12-global-infrastructure.html"><span class="num">12</span> Global Infrastructure</a></li>
+      </ul>
+    </div>
+
+    <div class="nav-group">
+      <p class="nav-group-label">Reference</p>
+      <ul class="nav-list">
+        <li><a href="design-system.html"><span class="num">·</span> Design System</a></li>
+        <li><a href="appendices.html"><span class="num">·</span> Appendices &amp; Bibliography</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+    <div class="content">
+
+      <p class="eyebrow">Chapter 1 · The Physical Floor</p>
+      <h1 class="page-title">Electricity &amp; Electronics</h1>
+      <p class="dek">
+        Before a single bit can move anywhere, someone has to push an electron.
+        Every layer this site covers — packets, protocols, data centers, the whole
+        Internet — is built on top of the physics in this chapter.
+      </p>
+
+      <div class="meta-row">
+        <span class="meta-chip">⏱ <b>15–20 min</b> read</span>
+        <span class="meta-chip">📋 Prerequisites: <b>none</b></span>
+        <span class="meta-chip">📍 Chapter <b>1</b> of 12</span>
+      </div>
+
+      <h2>What's actually moving inside a wire?</h2>
+      <p>
+        Every atom has a nucleus surrounded by electrons — tiny, negatively charged
+        particles. In most materials, those electrons stay put, bound tightly to
+        their own atom. But in a handful of materials, called <strong>conductors</strong>
+        (copper and aluminum are the ones you'll meet most), the outermost electrons
+        aren't bound to any single atom. They roam freely through the material's
+        atomic lattice, jostling around at random — until something gives them a
+        reason to move in one direction.
+      </p>
+      <p>
+        That "something" is <strong>voltage</strong>: a difference in electrical
+        potential between two points, created by a battery, a power supply, or
+        another source. Voltage doesn't push electrons by magic — think of it as a
+        difference in electrical "pressure" between two ends of a wire. Wherever
+        that pressure exists, free electrons drift from the low-potential end toward
+        the high-potential end. The rate at which that charge flows past a point is
+        <strong>current</strong>, measured in amperes (amps).
+      </p>
+
+      <div class="box analogy">
+        <div class="box-label">🏙️ Analogy: a circuit is a city grid</div>
+        <p>
+          Picture current as cars and voltage as the slope of the road. A steep hill
+          (high voltage) pushes more cars downhill per second (more current) than a
+          gentle slope. A traffic jam — resistance — slows the flow no matter how
+          steep the hill is. Every circuit is just this system, closed into a loop:
+          cars have to come back around to go down the hill again, which is exactly
+          why a circuit has to be a complete loop for current to flow at all.
+        </p>
+      </div>
+
+      <p>
+        One historical quirk worth knowing: engineers define "conventional current"
+        as flowing from positive to negative, but actual electrons move the opposite
+        way, negative to positive. That backwards convention was set by Benjamin
+        Franklin in the 1700s, decades before anyone knew electrons existed — and
+        it stuck. Every circuit diagram you'll ever see uses it. It doesn't change
+        any of the math, just which direction the arrow points.
+      </p>
+
+      <h2>Circuits and Ohm's Law: the only equation you truly need</h2>
+      <p>
+        Connect a voltage source to a conductor and current flows — but how much?
+        That depends on <strong>resistance</strong>: how much a material fights the
+        flow of electrons, measured in ohms (Ω). Insulators like rubber or glass
+        have almost no free electrons, so their resistance is enormous — current
+        barely flows at all, which is exactly why they're used to coat wires.
+        Conductors have low resistance. And the relationship between all three
+        quantities is <strong>Ohm's Law</strong>:
+      </p>
+      <pre><code>V = I × R
+(Voltage = Current × Resistance)</code></pre>
+      <p>
+        This one equation is why every circuit — from a flashlight to a CPU — can
+        be designed on paper before it's built. Say you want to light an LED from a
+        5V supply. The LED itself drops about 2V across it and wants roughly 20mA
+        (0.02A) of current to glow at normal brightness without burning out. You
+        need a resistor to absorb the remaining voltage:
+      </p>
+      <pre><code>R = (5V - 2V) / 0.02A = 150Ω</code></pre>
+      <p>
+        Drop a 150Ω resistor in series with the LED, and the math guarantees it
+        gets exactly the current it wants. This is the entire discipline of analog
+        circuit design in miniature: pick the current you want, measure the voltage
+        you have, solve for the resistor in between.
+      </p>
+
+      <div class="box lab">
+        <div class="box-label">🧪 Try it yourself: prove Ohm's Law on a breadboard</div>
+        <p>
+          You'll need a breadboard, a 5V source (a USB power brick works), an LED,
+          a 150Ω resistor, and a multimeter.
+        </p>
+        <ol>
+          <li>Wire the resistor in series with the LED across the 5V supply.</li>
+          <li>Set your multimeter to measure DC voltage across just the resistor.</li>
+          <li>
+            You should read close to <strong>3V</strong> (5V supply minus the LED's
+            ~2V drop) — confirming the LED is doing exactly what its datasheet
+            promised.
+          </li>
+          <li>
+            Switch the multimeter to current mode, break the circuit, and measure
+            current in series. You should read close to <strong>20mA</strong>.
+          </li>
+          <li>
+            Now swap in a 330Ω resistor instead. Current should drop to roughly
+            9mA, and the LED will visibly dim — Ohm's Law, made visible.
+          </li>
+        </ol>
+      </div>
+
+      <div class="box fact">
+        <div class="box-label">⚡ Did you know?</div>
+        <p>
+          Individual electrons in a copper wire drift shockingly slowly — often
+          under a millimeter per second, slower than a snail. Yet flip a light
+          switch across the room and the bulb turns on instantly. That's because
+          you're not waiting for an electron to physically travel from the switch
+          to the bulb; you're waiting for the electric field to propagate through
+          the wire, which happens at a large fraction of the speed of light. The
+          "signal" and the "electrons carrying it" are two very different speeds —
+          a distinction that becomes critical later in this site when we talk about
+          why fiber-optic signals can cross oceans in milliseconds.
+        </p>
+      </div>
+
+      <h2>Transistors: the switch that made computing possible</h2>
+      <p>
+        Resistors and LEDs get you a flashlight. To get a computer, you need a
+        component that can act as a switch — but one controlled by electricity
+        instead of a human finger, and small and fast enough to flip billions of
+        times a second. That component is the <strong>transistor</strong>: a
+        semiconductor device that uses a small voltage or current at one terminal
+        to control a much larger current flowing between two other terminals.
+      </p>
+
+      <div class="box analogy">
+        <div class="box-label">🚰 Analogy: the transistor as a valve</div>
+        <p>
+          Imagine a garden hose with a clamp on it, and the clamp is controlled by
+          a second, much thinner hose. A tiny squeeze of water through the thin hose
+          is enough to open or close the clamp, controlling a much larger flow of
+          water through the main hose. That's a transistor: a small control signal
+          (the thin hose) switches a much larger current (the main hose) fully on
+          or fully off. Chain enough of these valves together in the right pattern,
+          and you can build logic — AND, OR, NOT — out of nothing but switches.
+          Chain enough logic together, and you have a processor.
+        </p>
+      </div>
+
+      <p>
+        Modern chips don't use one transistor — they use an almost incomprehensible
+        number of them, packed onto a piece of silicon smaller than a fingernail,
+        each one switching on and off billions of times per second. Every layer
+        above this one — every packet, every protocol, every website — ultimately
+        reduces to patterns of transistors switching on and off in exactly this way.
+      </p>
+
+      <h3>Conductor vs. insulator, side by side</h3>
+      <table>
+        <thead>
+          <tr><th>Property</th><th>Conductor (e.g. copper)</th><th>Insulator (e.g. rubber)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Free electrons</td><td>Many, roam loosely</td><td>Almost none</td></tr>
+          <tr><td>Typical resistance</td><td>Very low</td><td>Extremely high</td></tr>
+          <tr><td>Common examples</td><td>Copper, aluminum, gold</td><td>Rubber, glass, plastic</td></tr>
+          <tr><td>Role in a cable</td><td>Carries the signal</td><td>Insulates/shields it</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What's next</h2>
+      <p>
+        We now have electrons moving through a wire under the control of a
+        transistor. But how does that translate into a signal that can travel
+        meters — or thousands of kilometers — without falling apart? That's the
+        subject of Chapter 2: how the same physics scales from a breadboard up to
+        copper cabling, fiber optics, and radio waves.
+      </p>
+
+      <footer class="site-footer">
+        Sources: Wikipedia — "Electron," "Electrical resistance and conductance,"
+        "Ohm's law," "Drift velocity," "Transistor."
+      </footer>
+
+      <div class="pager">
+        <a href="index.html">← Introduction</a>
+        <a href="02-physical-media.html">Chapter 2: Physical Media →</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="assets/nav.js"></script>
+<script src="assets/search-data.js"></script>
+<script src="assets/search.js"></script>
+</body>
+</html>
