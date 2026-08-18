@@ -61,7 +61,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   line-height: 1.7;
   font-size: 17px;
   overflow-wrap: break-word;
@@ -140,7 +140,7 @@ code { overflow-wrap: anywhere; }
 .topbar .theme-toggle { margin-left: auto; }
 
 .sidebar-brand .name {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-weight: 700;
   font-size: 14.5px;
   color: var(--text);
@@ -148,7 +148,7 @@ code { overflow-wrap: anywhere; }
 }
 
 .sidebar-tagline {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12px;
   color: var(--text-faint);
   margin: 4px 0 26px;
@@ -164,7 +164,7 @@ code { overflow-wrap: anywhere; }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 9px 12px;
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 13px;
   color: var(--text);
   outline: none;
@@ -203,21 +203,21 @@ code { overflow-wrap: anywhere; }
 .search-result:hover { background: var(--bg-card); }
 
 .search-result .sr-title {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 13px;
   font-weight: 600;
   color: var(--text);
 }
 
 .search-result .sr-section {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 11.5px;
   color: var(--text-faint);
 }
 
 .search-empty {
   padding: 10px;
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12.5px;
   color: var(--text-faint);
 }
@@ -227,7 +227,7 @@ code { overflow-wrap: anywhere; }
 }
 
 .nav-group-label {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -249,7 +249,7 @@ code { overflow-wrap: anywhere; }
   border-radius: 7px;
   text-decoration: none;
   color: var(--text-dim);
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 13.5px;
   transition: background 0.15s ease, color 0.15s ease;
 }
@@ -307,7 +307,7 @@ a.locked {
 }
 
 .eyebrow {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -327,7 +327,7 @@ a.locked {
 }
 
 .page-title {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 40px;
   font-weight: 700;
   line-height: 1.15;
@@ -351,7 +351,7 @@ a.locked {
 }
 
 .meta-chip {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12.5px;
   color: var(--text-dim);
   background: var(--bg-card);
@@ -366,7 +366,7 @@ a.locked {
 .meta-chip b { color: var(--text); font-weight: 600; }
 
 h2 {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: var(--heading);
@@ -377,7 +377,7 @@ h2 {
 h2:first-of-type { margin-top: 0; }
 
 h3 {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 18px;
   font-weight: 700;
   color: var(--text);
@@ -398,7 +398,7 @@ a { color: var(--link); }
 strong { color: var(--heading); }
 
 code {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: "Google Sans Code", monospace;
   font-size: 0.87em;
   background: var(--code-bg);
   border: 1px solid var(--border);
@@ -414,7 +414,7 @@ pre {
   padding: 18px 20px;
   overflow-x: auto;
   margin: 22px 0;
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: "Google Sans Code", monospace;
   font-size: 13.5px;
   line-height: 1.6;
 }
@@ -433,7 +433,7 @@ table {
   border-collapse: collapse;
   margin: 24px 0;
   font-size: 14.5px;
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
 }
 
 th, td {
@@ -465,7 +465,7 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 .box-label {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -502,7 +502,7 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 .stack li {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -543,14 +543,14 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 .roadmap-card .n {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 11px;
   color: var(--text-faint);
   margin-bottom: 4px;
 }
 
 .roadmap-card .t {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: var(--text);
@@ -566,7 +566,7 @@ tbody tr:last-child td { border-bottom: none; }
   display: flex;
   justify-content: space-between;
   margin-top: 56px;
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 13.5px;
 }
 
@@ -598,12 +598,12 @@ tbody tr:last-child td { border-bottom: none; }
 .swatch .fill { height: 56px; }
 
 .swatch .label {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   padding: 8px 10px;
 }
 
 .swatch .label .name { display: block; font-size: 12.5px; font-weight: 600; color: var(--text); }
-.swatch .label .val { display: block; font-size: 11px; color: var(--text-faint); font-family: monospace; }
+.swatch .label .val { display: block; font-size: 11px; color: var(--text-faint); font-family: "Google Sans Code", monospace; }
 
 .specimen-row {
   display: flex;
@@ -616,7 +616,7 @@ tbody tr:last-child td { border-bottom: none; }
 .specimen-row .tag {
   flex-shrink: 0;
   width: 130px;
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12px;
   color: var(--text-faint);
 }
@@ -625,7 +625,7 @@ footer.site-footer {
   margin-top: 70px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-size: 12.5px;
   color: var(--text-faint);
 }
@@ -656,7 +656,7 @@ footer.site-footer {
 }
 
 .topbar .name {
-  font-family: "Segoe UI", Roboto, sans-serif;
+  font-family: "Google Sans", Roboto, sans-serif;
   font-weight: 700;
   font-size: 13.5px;
   color: var(--text);
